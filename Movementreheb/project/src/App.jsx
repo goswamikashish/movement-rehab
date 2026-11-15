@@ -1,0 +1,155 @@
+// import React from "react";
+// import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+// import Navbar from "./Component/navbar.jsx";
+// import Home from "./Component/Home";
+// import Offering from "./Component/Offering.jsx";
+// import Appointment from "./Component/Appointment.jsx";
+// import SchemaMarkup from "./Component/SchemaMarkup.jsx";
+// import About from "./Component/About.jsx";
+// import Service from "./Component/Service.jsx";
+
+// import Footer from "./Component/Footer.jsx";
+
+// import { ToastContainer } from "react-toastify";
+// import "react-toastify/dist/ReactToastify.css";
+
+// import Blogs from "./Component/Blogs.jsx";
+// import ProtectedRoute from "./Component/ProtectedRoute.jsx";
+// import OwnerLogin from "./Component/OwnerLogin.jsx";
+// import AdminBlogUpload from "./Component/AdminBlogUpload.jsx";
+
+// import chatbot from "./Component/Chatbot.jsx";
+// function App() {
+//   return (
+//     <Router>
+      
+//       <div>
+//       <SchemaMarkup />
+//         <Navbar />
+
+//         {/* Define routes for Home only */}
+//         <Routes>
+//           <Route path="/" element={<Home />} />
+//           <Route path="Appointment" element={<Appointment />} />
+
+//           <Route path="About" element={<About />} />
+//           <Route path="Offering" element={<Offering />} />
+//           <Route path="Service" element={<Service />} />
+
+//           <Route path="Blogs" element={<Blogs />} />
+//           <Route path="/owner-login" element={<OwnerLogin />} />
+
+//           <Route
+//             path="/admin/blog-upload"
+//             element={
+//               <ProtectedRoute>
+//                 <AdminBlogUpload />
+//               </ProtectedRoute>
+//             }
+//           />
+
+//           <Route path="chatbot" element={<chatbot />} />
+
+//           <Route path="*" element={<Home />} />
+//         </Routes>
+//         <Footer></Footer>
+
+//         {/* Toast Container for notifications */}
+//         <ToastContainer position="top-right" autoClose={3000} pauseOnHover />
+//       </div>
+//     </Router>
+//   );
+// }
+
+// export default App;
+
+
+
+
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+
+// Components
+import Navbar from "./Component/navbar.jsx";
+import Home from "./Component/Home";
+import Offering from "./Component/Offering.jsx";
+import Appointment from "./Component/Appointment.jsx";
+import About from "./Component/About.jsx";
+import Service from "./Component/Service.jsx";
+import Footer from "./Component/Footer.jsx";
+
+import Blogs from "./Component/Blogs.jsx";
+import ProtectedRoute from "./Component/ProtectedRoute.jsx";
+import OwnerLogin from "./Component/OwnerLogin.jsx";
+import AdminBlogUpload from "./Component/AdminBlogUpload.jsx";
+import Chatbot from "./Component/Chatbot.jsx";
+
+// SEO / Structured Data
+import SchemaMarkup from "./Component/SchemaMarkup.jsx";
+import { HelmetProvider } from "react-helmet-async";
+// Toast Notifications
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+function App() {
+  return (
+    <Router>
+       <HelmetProvider>
+
+      <div>
+        {/* SEO Structured Data */}
+        <SchemaMarkup />
+
+        {/* Navigation */}
+        <Navbar />
+
+        {/* Website Routes */}
+        <Routes>
+          {/* Home */}
+          <Route path="/" element={<Home />} />
+
+          {/* Main Website Pages */}
+          <Route path="/appointment" element={<Appointment />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/offering" element={<Offering />} />
+          <Route path="/service" element={<Service />} />
+     
+          <Route path="/blogs" element={<Blogs />} />
+          <Route path="/blog/:slug" element={<Blogs />} />
+          {/* Owner Login */}
+          <Route path="/owner-login" element={<OwnerLogin />} />
+
+          {/* Protected Admin Blog Upload */}
+          <Route
+            path="/admin/blog-upload"
+            element={
+              <ProtectedRoute>
+                <AdminBlogUpload />
+              </ProtectedRoute>
+            }
+          />
+
+          {/* Chatbot */}
+          <Route path="/chatbot" element={<Chatbot />} />
+
+          {/* Fallback */}
+          <Route path="*" element={<Home />} />
+        </Routes>
+
+        {/* Footer */}
+        <Footer />
+
+        {/* Toast Notifications */}
+        <ToastContainer
+          position="top-right"
+          autoClose={3000}
+          pauseOnHover
+        />
+      </div>
+      </HelmetProvider>
+
+    </Router>
+  );
+}
+
+export default App;
