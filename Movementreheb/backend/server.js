@@ -54,9 +54,9 @@ app.get("/", (req, res) => {
 const startServer = async () => {
   await databaseConnection();
 
-  app.listen(port, () => {
-    console.log("server started on PORT:" + port);
-  });
+  app.listen(port, "0.0.0.0", () => {
+  console.log("server started on PORT:" + port);
+});
 };
 
 startServer();
