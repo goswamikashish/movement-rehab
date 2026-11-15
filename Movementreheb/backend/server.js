@@ -17,7 +17,9 @@ const allowedOrigins = [
   "http://localhost:5000",
   "https://movementrehab.in",
   "https://www.movementrehab.in",
-  "https://physioonline-main.vercel.app",
+  "https://physioonline-main.vercel.app"
+  "https://movement-rehab-five.vercel.app",
+  ,
 ];
 
 app.use(
